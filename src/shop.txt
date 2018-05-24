@@ -1,0 +1,108 @@
+购物系统数据库表
+	t_user:
+		id
+		username
+		password
+		phone
+		address
+		email
+	
+	t_product:
+		id
+		name
+		price
+	
+	
+	t_order
+		id
+		user_id
+		no
+		price
+		
+	t_item
+		id
+		product_id
+		num
+		order_id
+		price
+		
+vo:值对象
+Cart
+	创建时机:
+		用户登录的时候创建一个购物车,并且将这个购物车放入到session中
+		
+	销毁时机:
+		结算
+		注销
+		
+	属性:
+		订单明细的集合List<Item>
+		购物车中的商品总价
+		
+	方法:
+		add(Integer productId)
+		
+		deleteById(Integer productId)
+		
+		deleteByIds(List<Integer> ids)
+		
+		modifyNum(Integer productId,Integer num)
+		
+		clear()
+		
+
+查询我的订单的多表数据,要求一个sql语句、
+
+	查询多少条记录
+	
+	select count(1) from t_item 
+	where order_id = 5
+
+
+	select *
+	from t_item i
+	left join t_product p
+	on i.product_id = p.id
+	left join t_order o
+	on i.order_id = o.id
+	left join t_user u
+	on o.user_id = u.id
+	where o.id=5
+	
+	
+	
+	select u.username,o.no,
+	p.name,i.num,i.price,o.price,
+	(select count(1) from t_item 
+	where order_id = o.id) as count
+	from t_order o
+	
+	join t_item i 
+	on o.id = i.order_id
+	
+	join t_user u
+	on u.id = o.user_id
+	
+	join t_product p 
+	on i.product_id = p.id 
+	
+	where o.id=5
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	

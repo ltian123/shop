@@ -1,0 +1,109 @@
+<%="男".equals(emp.getGender()) ? "checked" : "" %>
+${"男" eq emp.gender ? "checked" : "" }
+
+
+
+访问自定义方法
+	1.在java中定义一个方法
+		方法是public static的
+		
+	2.配置写好的方法
+		定义在一个.tld文件中
+		放在WEB-INF下
+		
+	3.在jsp中通过EL表达式使用
+	
+	
+JSTL标签库
+	是由官方提供的一套标签库
+	
+	使用JSTL标签库时需要先导入官方标签库
+	
+	choose:相当于java中的switch
+		when:
+			test:表示一个表达式,判断该表达的真假,若为true进入when语句中,若为false则不进入
+		otherwise:
+		switch(){
+			case:....break
+		}
+	
+	if:
+		if()
+		if()
+		if()
+	
+	foreach:
+		遍历数据
+		
+		items:表示需要遍历的集合
+		var:表示当前正在遍历到的对象所使用的变量名
+		varStatus:存放遍历状态的变量	
+		begin:遍历的起始位置
+		end:遍历的结束位置
+		step:遍历的步长
+	
+	catch:
+		处理产生的异常,主体为监视的代码
+	
+	out:
+		用于显示数据,类似<%= %>
+		
+	url:
+		表示处理与url有关的操作	
+	
+	import:
+	
+	
+	redirect:
+		
+	
+	
+	fmt标签
+		formatDate:
+			value:表示时间的值
+			type:显示时间的类型
+				time:只显示时间,不显示日期
+				date:只显示日期,不显示时间
+				both:显示日期与时间
+				
+			pattern:格式	
+			
+	
+自定义标签
+	1.写一个java类
+		继承SimpleTagSupport
+		重写doTag方法
+		
+	2.配置文件
+		定义在一个.tld的文件中
+		
+	3.使用	
+	
+文件上传:
+	设置表单的提交方式 enctype="mulipat-form/data"
+	
+	浏览器不再对表单数据进行编码
+	以二进制流的方式发送给服务器
+	以request.getParamter已经无法获取到数据
+	需要使用InputStream获取表单中的数据
+	然后对这个二进制流进行解析
+	
+	因为解析起来非常的麻烦
+	需要对于http协议定义的规范非常熟悉
+	所以一般使用第三方提供的工具来解析
+	
+	
+	
+	
+	
+	name:null,file:null
+	-----------------------------292511839632186
+	Content-Disposition: form-data; name="name"
+	
+	aaaa
+	-----------------------------292511839632186
+	Content-Disposition: form-data; name="file"; filename="day01.txt"
+	Content-Type: text/plain
+	
+	文件内容部分
+	......	
